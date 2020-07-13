@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bedrock/base_framework/config/app_config.dart';
 import 'package:flutter_bedrock/base_framework/config/global_provider_manager.dart';
+import 'package:flutter_bedrock/base_framework/navigator/custom_navigator_observer.dart';
 import 'package:flutter_bedrock/base_framework/view_model/app_model/locale_model.dart';
 import 'package:flutter_bedrock/base_framework/widget_state/base_state.dart';
 import 'package:flutter_bedrock/page/demo_page/demo_page.dart';
@@ -49,6 +50,9 @@ void main()async{
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     ///设计图尺寸
@@ -62,6 +66,7 @@ class MyApp extends StatelessWidget {
             return RefreshConfiguration(
               hideFooterWhenNotFull: true,//列表数据不满一页,不触发加载更多
               child: MaterialApp(
+                navigatorKey: navigatorKey,
 //                theme: ThemeData(
 //                  //项目配置字体，其他主题颜色配置的可以百度
 ////                  fontFamily: Theme.of(context).platform == TargetPlatform.android? (localModel.localeIndex == 1 ?  "HanSans":"DIN") : "IOSGILROY",
@@ -86,6 +91,11 @@ class MyApp extends StatelessWidget {
                   });
                 },
                 initialRoute: RouteName.demo_page,
+                //routes: ,
+//                navigatorObservers: [
+//                  CustomNavigatorObserver(navigatorKey),
+//                ],
+
               ),
             );
           }),),

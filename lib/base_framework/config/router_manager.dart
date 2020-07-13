@@ -75,7 +75,11 @@ class RouteName{
 
 class Router{
 
+  static final List<String> routeRecord = [];
+
   static Route<dynamic> generateRoute(RouteSettings settings){
+    routeRecord.add(settings.name);
+    debugPrint('${routeRecord.toString()}');
     switch(settings.name) {
       case RouteName.update_page:
         return NoAnimRouteBuilder(UpdatePage());
@@ -129,5 +133,34 @@ class Router{
         return NoAnimRouteBuilder(DetailImageWidget(settings.arguments));
     }
   }
+
+//  static Map<String,WidgetBuilder> routes = {
+//    RouteName.update_page : NoAnimRouteBuilder(UpdatePage()),
+//    RouteName.demo_page : NoAnimRouteBuilder(DemoPage()),
+//    RouteName.scroll_page : NoAnimRouteBuilder(ScrollPage()),
+//    RouteName.cache_data_page : NoAnimRouteBuilder(CacheDataPage()),
+//    RouteName.little_util_page: NoAnimRouteBuilder(LittleUtilPage()),
+//    RouteName.ffloat_page:NoAnimRouteBuilder(FFloatPage()),
+//    RouteName.permissions_page:NoAnimRouteBuilder(RequestPermissionsPage()),
+//    RouteName.demo_other_page:NoAnimRouteBuilder(OtherDemoPage()),
+//    RouteName.local_i10l_page:NoAnimRouteBuilder(LocalPage()),
+//    RouteName.login_page:SlideTopRouteBuilder(LoginPage()),
+//    RouteName.pick_image_page:NoAnimRouteBuilder(PickImagePage()),
+//    RouteName.main_page:NoAnimRouteBuilder(MainPage()),
+//    RouteName.demo_exception_page:NoAnimRouteBuilder(HandleExceptionPage()),
+//    RouteName.slide_out_page:SlideRightRouteBuilder(SlideOutPage()),
+//    RouteName.timer_page:NoAnimRouteBuilder(TimerPage()),
+//    RouteName.route_anim_page:NoAnimRouteBuilder(RouteAnimationPage()),
+//    RouteName.slide_page:SlideTopRouteBuilder(SlidePage()),
+//    RouteName.fade_page:FadeRouteBuilder(FadePage()),
+//    RouteName.scale_page:ScaleRouteBuilder(ScalePage()),
+//    RouteName.web_page:(context,{Map arguments}) => NoAnimRouteBuilder(WebPage(arguments)),
+//    RouteName.html_page:NoAnimRouteBuilder(HtmlPage(settings.arguments)),
+//    RouteName.editor_image_page:SlideTopRouteBuilder(ImageEditor(settings.arguments)),
+//    RouteName.show_big_image:NoAnimRouteBuilder(DetailImageWidget(settings.arguments)),
+//
+//
+//  };
+
 
 }
